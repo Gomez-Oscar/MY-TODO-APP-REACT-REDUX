@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialTodoList = {
   todoList: [],
+  error: null
 };
 
 const todoListSlice = createSlice({
@@ -25,10 +26,19 @@ const todoListSlice = createSlice({
         (_, index) => index !== action.payload
       );
     },
+
+    fillTodoList: (state,action) => {
+      state.todoList = action.payload
+    },
+
+    setError: (state,action) =>{
+      state.error = action.payload
+    } 
+
   },
 });
 
 export default todoListSlice.reducer;
 
-export const { createTask, toggleStatusTask, deleteTask } =
+export const { createTask, toggleStatusTask, deleteTask, fillTodoList, setError } =
   todoListSlice.actions;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createTask } from '../../store/todoList/todoListSlice';
+import { createTaskAsync } from '../../store/todoList/todoListActions';
 
 const TaskForm = () => {
   const [newTask, setNewtask] = useState('');
@@ -10,7 +10,7 @@ const TaskForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(
-      createTask({
+      createTaskAsync({
         task: newTask,
         status: false,
       })
